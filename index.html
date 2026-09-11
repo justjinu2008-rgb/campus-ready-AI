@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arabian Delight | Authentic Flavors & Warm Hospitality</title>
+  <style>
+    :root {
+      --bg: #fff8f1;
+      --text: #2f241d;
+      --accent: #b35a2b;
+      --accent-dark: #7c3f1c;
+      --card: #ffffff;
+      --muted: #6f5a4c;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(179, 90, 43, 0.08), transparent 24%),
+        var(--bg);
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: white;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: grid;
+      align-items: center;
+      min-height: calc(100vh - 90px);
+      padding: 40px 0;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .hero-content p {
+      max-width: 620px;
+      font-size: 1.05rem;
+      color: #f7e9dc;
+      margin-bottom: 24px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.16);
+    }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent-dark); }
+    .btn-secondary { background: transparent; border: 1px solid white; color: white; }
+
+    section { padding: 72px 0; }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: var(--accent-dark);
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 700px;
+    }
+
+    .about-grid,
+    .menu-grid,
+    .events-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .events-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.09);
+    }
+
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--muted); }
+
+    .gallery-item {
+      min-height: 180px;
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+    }
+
+    .gallery-item span {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      color: white;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-item:last-child { border-bottom: none; }
+
+    .price { color: var(--accent); font-weight: 700; }
+
+    .highlight {
+      background: linear-gradient(135deg, #fce6d3, #fff5ea);
+      border-left: 4px solid var(--accent);
+    }
+
+    footer {
+      background: #2f241d;
+      color: #f8e9dc;
+      padding: 24px 0;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .about-grid,
+      .menu-grid,
+      .events-grid,
+      .gallery-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      header { min-height: auto; }
+      .hero { min-height: auto; padding: 60px 0; }
+      .section-title { font-size: 1.6rem; }
+      .card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">Arabian Delight</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href=>Menu</a>
+          <a href="#events">Events</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Authentic Arabian flavors served with warmth and elegance.</h1>
+          <p>Step into Arabian Delight for rich spices, traditional dishes, and a welcoming atmosphere perfect for family dinners, gatherings, and memorable meals.</p>
+          <div class="btn-row">
+            <a href="#menu" class="btn btn-primary">View Menu</a>
+            <a href="#contact" class="btn btn-secondary">Book a Table</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Why guests love us</h2>
+        <p class="section-subtitle">From fragrant grills to slow-cooked specialties, Arabian Delight brings comfort, flavor, and hospitality to every visit.</p>
+        <div class="about-grid">
+          <div class="card">
+            <h3>Authentic spices</h3>
+            <p>We craft each dish with bold, traditional flavors and freshly blended spices that bring the heart of Arabia to your table.</p>
+          </div>
+          <div class="card highlight">
+            <h3>Comfort food favorites</h3>
+            <p>Enjoy flavorful rice dishes, grilled meats, fresh bread, and chef specials made for sharing and celebration.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <h2 class="section-title">Signature Menu</h2>
+        <p class="section-subtitle">A few favorites from our kitchen, made with tradition and care.</p>
+        <div class="menu-grid">
+          <div class="card">
+            <h3>Start Your Meal</h3>
+            <div class="menu-item"><span>Hummus & Pita</span><span class="price">$8</span></div>
+            <div class="menu-item"><span>Falafel Plate</span><span class="price">$10</span></div>
+            <div class="menu-item"><span>Fresh Tabbouleh</span><span class="price">$7</span></div>
+          </div>
+          <div class="card">
+            <h3>Refreshing Drinks</h3>
+            <div class="menu-item"><span>Mint Lemonade</span><span class="price">$4</span></div>
+            <div class="menu-item"><span>Cardamom Tea</span><span class="price">$5</span></div>
+            <div class="menu-item"><span>Arabic Coffee</span><span class="price">$6</span></div>
+          </div>
+          <div class="card">
+            <h3>Signature Dishes</h3>
+            <div class="menu-item"><span>Chicken Shawarma</span><span class="price">$14</span></div>
+            <div class="menu-item"><span>Beef Kebab Plate</span><span class="price">$16</span></div>
+            <div class="menu-item"><span>Mixed Grill</span><span class="price">$18</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <p class="section-subtitle">Join us for family nights, live entertainment, and seasonal feasts.</p>
+        <div class="events-grid">
+          <div class="card">
+            <h3>Live Oud Night</h3>
+            <p>Every Friday from 7 PM with traditional music and warm hospitality.</p>
+          </div>
+          <div class="card">
+            <h3>Weekend Family Feast</h3>
+            <p>Enjoy shared platters, fresh bread, and a festive spread for every table.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">Moments at Arabian Delight</h2>
+        <p class="section-subtitle">A glimpse of our warm interiors, colorful dishes, and joyful gatherings.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80');"><span>Cozy Interiors</span></div>
+          <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80');"><span>Chef Specials</span></div>
+          <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=800&q=80');"><span>Sweet Treats</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Visit Arabian Delight</h2>
+        <p class="section-subtitle">Open daily from 11:00 AM to 11:00 PM. Find us at 42 Market Street.</p>
+        <div class="card">
+          <p><strong>Phone:</strong> (555) 123-4567</p>
+          <p><strong>Email:</strong> hello@thecafe.com</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Arabian Delight. Crafted with comfort and flavor.</p>
+    </div>
+  </footer>
+</body>
+</html>
