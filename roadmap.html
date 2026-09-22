@@ -1,0 +1,1127 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DSA Quest | Roadmap</title>
+
+    <link
+        rel="stylesheet"
+        href="dsa.css"
+    >
+
+    <style>
+
+        /* =========================
+           ROADMAP PAGE
+        ========================= */
+
+        .roadmap-page {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 25px 100px;
+        }
+
+
+        .roadmap-hero {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+
+        .roadmap-hero small {
+            color: #22d3ee;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+
+        .roadmap-hero h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            margin: 12px 0;
+            background: linear-gradient(
+                90deg,
+                #22d3ee,
+                #a855f7,
+                #ec4899
+            );
+            background-clip: text;
+color: transparent;
+        }
+
+
+        .roadmap-hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #94a3b8;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+        /* PLAYER PROGRESS */
+
+        .roadmap-progress {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 70px;
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.12);
+        }
+
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+
+        .progress-header h2 {
+            margin: 5px 0;
+        }
+
+
+        .progress-header span {
+            color: #a78bfa;
+            font-weight: 800;
+        }
+
+
+        .road-progress-bg {
+            height: 14px;
+            background: #1e293b;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+
+        .road-progress-fill {
+            height: 100%;
+            width: 28%;
+            border-radius: 50px;
+
+            background: linear-gradient(
+                90deg,
+                #22d3ee,
+                #8b5cf6,
+                #ec4899
+            );
+
+            box-shadow:
+                0 0 15px #8b5cf6;
+
+            transition: width 0.8s ease;
+        }
+
+
+        /* ROAD */
+
+        .roadmap-container {
+            position: relative;
+            max-width: 900px;
+            margin: auto;
+        }
+
+
+        .road-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            transform: translateX(-50%);
+
+            background: linear-gradient(
+                #22d3ee,
+                #8b5cf6,
+                #ec4899,
+                #f59e0b
+            );
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 0 15px rgba(139, 92, 246, 0.5);
+        }
+
+
+        /* ROAD ITEM */
+
+        .road-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 45px;
+            margin-bottom: 35px;
+        }
+
+
+        .road-item.left {
+            left: 0;
+            text-align: right;
+        }
+
+
+        .road-item.right {
+            left: 50%;
+            text-align: left;
+        }
+
+
+        /* NODE */
+
+        .road-node {
+            position: absolute;
+
+            width: 58px;
+            height: 58px;
+
+            top: 30px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+
+            background: #0f172a;
+
+            border: 4px solid #8b5cf6;
+
+            z-index: 5;
+
+            box-shadow:
+                0 0 20px rgba(139, 92, 246, 0.7);
+        }
+
+
+        .road-item.left .road-node {
+            right: -29px;
+        }
+
+
+        .road-item.right .road-node {
+            left: -29px;
+        }
+
+
+        /* COMPLETED */
+
+        .road-item.completed .road-node {
+            border-color: #22c55e;
+
+            background: #052e16;
+
+            box-shadow:
+                0 0 25px rgba(34, 197, 94, 0.7);
+        }
+
+
+        /* CURRENT */
+
+        .road-item.current .road-node {
+            border-color: #facc15;
+
+            background: #422006;
+
+            box-shadow:
+                0 0 30px rgba(250, 204, 21, 0.8);
+
+            animation: pulseNode 1.5s infinite;
+        }
+
+
+        @keyframes pulseNode {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* LOCKED */
+
+        .road-item.locked .road-node {
+            border-color: #475569;
+            color: #64748b;
+            box-shadow: none;
+        }
+
+
+        /* CARD */
+
+        .road-card {
+            padding: 25px;
+
+            background: rgba(15, 23, 42, 0.9);
+
+            border: 1px solid rgba(148, 163, 184, 0.15);
+
+            border-radius: 22px;
+
+            transition:
+                transform 0.3s ease,
+                border 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .road-card:hover {
+            transform: translateY(-7px);
+
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 15px 45px rgba(124, 58, 237, 0.2);
+        }
+
+
+        .road-item.completed .road-card {
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+
+        .road-item.current .road-card {
+            border-color: rgba(250, 204, 21, 0.5);
+
+            box-shadow:
+                0 0 35px rgba(250, 204, 21, 0.08);
+        }
+
+
+        .road-card small {
+            color: #94a3b8;
+            font-weight: 700;
+        }
+
+
+        .road-card h2 {
+            margin: 8px 0;
+        }
+
+
+        .road-card p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+
+        .road-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0;
+        }
+
+
+        .road-tag {
+            padding: 7px 11px;
+            border-radius: 50px;
+
+            background: rgba(139, 92, 246, 0.12);
+
+            color: #c4b5fd;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .road-card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+
+        .road-xp {
+            color: #facc15;
+            font-weight: 800;
+        }
+
+
+        .road-btn {
+            border: none;
+            padding: 10px 17px;
+
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #ec4899
+            );
+
+            color: white;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+
+        .road-btn:hover {
+            transform: scale(1.05);
+        }
+
+
+        .road-btn.locked-btn {
+            background: #1e293b;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+
+        /* BOSS */
+
+        .boss-card {
+            margin-top: 80px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(236, 72, 153, 0.2),
+                    transparent 55%
+                ),
+                #0f172a;
+
+            border: 1px solid rgba(236, 72, 153, 0.35);
+
+            box-shadow:
+                0 0 60px rgba(236, 72, 153, 0.12);
+        }
+
+
+        .boss-icon {
+            font-size: 65px;
+            animation: bossFloat 2.5s ease-in-out infinite;
+        }
+
+
+        @keyframes bossFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+        }
+
+
+        .boss-card h2 {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+
+        .boss-card p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .road-line {
+                left: 25px;
+            }
+
+
+            .road-item,
+            .road-item.right,
+            .road-item.left {
+                width: 100%;
+                left: 0;
+                padding-left: 70px;
+                padding-right: 5px;
+                text-align: left;
+            }
+
+
+            .road-item.left .road-node,
+            .road-item.right .road-node {
+                left: -4px;
+                right: auto;
+            }
+
+
+            .progress-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+
+            .road-card-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- BACKGROUND -->
+
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ⚡ DSA<span>QUEST</span>
+        </div>
+
+
+        <div class="nav-links">
+
+            <button onclick="window.location.href='dsa.html'">
+                🏠 Home
+            </button>
+
+            <button onclick="window.location.href='practice.html'">
+                ⚔️ Practice
+            </button>
+
+            <button onclick="window.location.href='roadmap.html'">
+                🗺️ Roadmap
+            </button>
+
+            <button onclick="window.location.href='leaderboard.html'">
+                🏆 Leaderboard
+            </button>
+
+        </div>
+
+
+        <div class="profile-mini">
+
+            <div class="avatar">
+                👨‍💻
+            </div>
+
+            <div>
+                <b>DSA Warrior</b>
+                <small>Level 3</small>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ROADMAP -->
+
+    <main class="roadmap-page">
+
+
+        <!-- HERO -->
+
+        <section class="roadmap-hero">
+
+            <small>
+                🗺️ YOUR CODING JOURNEY
+            </small>
+
+            <h1>
+                DSA Roadmap
+            </h1>
+
+            <p>
+                Complete every stage, earn XP, unlock new
+                challenges and become a DSA legend.
+            </p>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+
+        <section class="roadmap-progress">
+
+            <div class="progress-header">
+
+                <div>
+
+                    <small>
+                        CURRENT JOURNEY
+                    </small>
+
+                    <h2>
+                        ⚔️ Code Warrior
+                    </h2>
+
+                </div>
+
+                <span>
+                    850 / 3000 XP
+                </span>
+
+            </div>
+
+
+            <div class="road-progress-bg">
+
+                <div
+                    class="road-progress-fill"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROAD -->
+
+        <section class="roadmap-container">
+
+            <div class="road-line"></div>
+
+
+            <!-- LEVEL 1 -->
+
+            <div class="road-item left completed">
+
+                <div class="road-node">
+                    ✓
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 01
+                    </small>
+
+                    <h2>
+                        📦 Array Academy
+                    </h2>
+
+                    <p>
+                        Master the fundamentals of arrays,
+                        searching and basic manipulation.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            Arrays
+                        </span>
+
+                        <span class="road-tag">
+                            Searching
+                        </span>
+
+                        <span class="road-tag">
+                            Sorting
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +300 XP
+                        </span>
+
+                        <button
+                            class="road-btn"
+                            onclick="window.location.href='practice.html'"
+                        >
+                            Completed ✓
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEVEL 2 -->
+
+            <div class="road-item left completed">
+
+                <div class="road-node">
+                    ✓
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 02
+                    </small>
+
+                    <h2>
+                        🔤 String Kingdom
+                    </h2>
+
+                    <p>
+                        Learn string manipulation,
+                        palindrome problems and hashing.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            Strings
+                        </span>
+
+                        <span class="road-tag">
+                            Hashing
+                        </span>
+
+                        <span class="road-tag">
+                            Two Pointer
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +350 XP
+                        </span>
+
+                        <button
+                            class="road-btn"
+                            onclick="window.location.href='practice.html'"
+                        >
+                            Completed ✓
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEVEL 3 -->
+
+            <div class="road-item right current">
+
+                <div class="road-node">
+                    ⚔️
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 03 • CURRENT
+                    </small>
+
+                    <h2>
+                        🔗 Linked List Lands
+                    </h2>
+
+                    <p>
+                        Master nodes, pointers, reversal,
+                        cycles and linked list techniques.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            Linked List
+                        </span>
+
+                        <span class="road-tag">
+                            Fast & Slow
+                        </span>
+
+                        <span class="road-tag">
+                            Pointers
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +400 XP
+                        </span>
+
+                        <button
+                            class="road-btn"
+                            onclick="window.location.href='practice.html'"
+                        >
+                            Enter Quest →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEVEL 4 -->
+
+            <div class="road-item left locked">
+
+                <div class="road-node">
+                    🔒
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 04 • LOCKED
+                    </small>
+
+                    <h2>
+                        🥞 Stack Fortress
+                    </h2>
+
+                    <p>
+                        Unlock stacks, queues, monotonic stacks
+                        and expression problems.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            Stack
+                        </span>
+
+                        <span class="road-tag">
+                            Queue
+                        </span>
+
+                        <span class="road-tag">
+                            Monotonic Stack
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +450 XP
+                        </span>
+
+                        <button
+                            class="road-btn locked-btn"
+                            disabled
+                        >
+                            🔒 Locked
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEVEL 5 -->
+
+            <div class="road-item right locked">
+
+                <div class="road-node">
+                    🔒
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 05 • LOCKED
+                    </small>
+
+                    <h2>
+                        🌳 Tree Kingdom
+                    </h2>
+
+                    <p>
+                        Enter the world of binary trees,
+                        BSTs and tree traversal algorithms.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            Binary Tree
+                        </span>
+
+                        <span class="road-tag">
+                            BST
+                        </span>
+
+                        <span class="road-tag">
+                            Traversal
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +500 XP
+                        </span>
+
+                        <button
+                            class="road-btn locked-btn"
+                            disabled
+                        >
+                            🔒 Locked
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEVEL 6 -->
+
+            <div class="road-item left locked">
+
+                <div class="road-node">
+                    🔒
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 06 • LOCKED
+                    </small>
+
+                    <h2>
+                        🕸️ Graph World
+                    </h2>
+
+                    <p>
+                        Master BFS, DFS, shortest paths,
+                        cycles and graph algorithms.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            BFS
+                        </span>
+
+                        <span class="road-tag">
+                            DFS
+                        </span>
+
+                        <span class="road-tag">
+                            Dijkstra
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +600 XP
+                        </span>
+
+                        <button
+                            class="road-btn locked-btn"
+                            disabled
+                        >
+                            🔒 Locked
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LEVEL 7 -->
+
+            <div class="road-item right locked">
+
+                <div class="road-node">
+                    🔒
+                </div>
+
+                <div class="road-card">
+
+                    <small>
+                        LEVEL 07 • LOCKED
+                    </small>
+
+                    <h2>
+                        🧠 DP Dimension
+                    </h2>
+
+                    <p>
+                        Master recursion, memoization,
+                        tabulation and advanced DP.
+                    </p>
+
+                    <div class="road-tags">
+
+                        <span class="road-tag">
+                            DP
+                        </span>
+
+                        <span class="road-tag">
+                            Memoization
+                        </span>
+
+                        <span class="road-tag">
+                            Tabulation
+                        </span>
+
+                    </div>
+
+                    <div class="road-card-bottom">
+
+                        <span class="road-xp">
+                            ⭐ +750 XP
+                        </span>
+
+                        <button
+                            class="road-btn locked-btn"
+                            disabled
+                        >
+                            🔒 Locked
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- FINAL BOSS -->
+
+        <section class="boss-card">
+
+            <div class="boss-icon">
+                👑
+            </div>
+
+            <h2>
+                THE FINAL BOSS
+            </h2>
+
+            <p>
+                Complete all seven worlds and unlock
+                the ultimate DSA challenge. Solve the
+                final boss problems to become a
+                <strong>DSA LEGEND</strong>.
+            </p>
+
+            <br>
+
+            <button
+                class="main-btn"
+                onclick="window.location.href='practice.html'"
+            >
+                ⚔️ Continue Training
+            </button>
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+        /* ROADMAP BUTTON ANIMATION */
+
+        var buttons =
+            document.querySelectorAll(".road-btn:not(.locked-btn)");
+
+        buttons.forEach(function(button) {
+
+            button.addEventListener(
+                "click",
+                function() {
+
+                    button.style.transform =
+                        "scale(0.95)";
+
+                    setTimeout(function() {
+
+                        button.style.transform =
+                            "";
+
+                    }, 150);
+
+                }
+            );
+
+        });
+
+
+        /* SIMPLE XP ANIMATION */
+
+        var progress =
+            document.querySelector(
+                ".road-progress-fill"
+            );
+
+        setTimeout(function() {
+
+            if (progress) {
+                progress.style.width = "28%";
+            }
+
+        }, 300);
+
+    </script>
+
+
+</body>
+
+</html>
+```

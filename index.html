@@ -1,327 +1,874 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arabian Delight | Authentic Flavors & Warm Hospitality</title>
-  <style>
-    :root {
-      --bg: #fff8f1;
-      --text: #2f241d;
-      --accent: #b35a2b;
-      --accent-dark: #7c3f1c;
-      --card: #ffffff;
-      --muted: #6f5a4c;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(179, 90, 43, 0.08), transparent 24%),
-        var(--bg);
-    }
+    <title>DSA Quest | Level Up Your Coding</title>
 
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
+    <link rel="stylesheet" href="dsa.css">
 
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
+    <style>
 
-    header {
-      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1400&q=80') center/cover;
-      color: white;
-      min-height: 100vh;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 0;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf5;
+            color: #171717;
+            overflow-x: hidden;
+        }
 
-    .logo {
-      font-size: 1.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+        /* NAVBAR */
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      font-weight: 500;
-    }
+        .landing-nav {
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-    .hero {
-      display: grid;
-      align-items: center;
-      min-height: calc(100vh - 90px);
-      padding: 40px 0;
-    }
+            background: rgba(255,255,255,0.92);
+            border-bottom: 1px solid #ffe1ca;
 
-    .hero-content h1 {
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+        }
 
-    .hero-content p {
-      max-width: 620px;
-      font-size: 1.05rem;
-      color: #f7e9dc;
-      margin-bottom: 24px;
-    }
+        .brand {
+            font-size: 25px;
+            font-weight: 900;
+        }
 
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+        .brand span {
+            color: #ff6500;
+        }
 
-    .btn {
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-weight: 600;
-      display: inline-block;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-    }
+        .landing-links {
+            display: flex;
+            gap: 10px;
+        }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.16);
-    }
-    .btn-primary { background: var(--accent); color: white; }
-    .btn-primary:hover { background: var(--accent-dark); }
-    .btn-secondary { background: transparent; border: 1px solid white; color: white; }
+        .landing-links button {
+            border: none;
+            background: transparent;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: #333;
+            font-weight: 600;
+            transition: .3s;
+        }
 
-    section { padding: 72px 0; }
+        .landing-links button:hover {
+            background: #fff0e4;
+            color: #ff6500;
+        }
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      color: var(--accent-dark);
-    }
+        .login-btn {
+            background: #ff6500 !important;
+            color: white !important;
+        }
 
-    .section-subtitle {
-      color: var(--muted);
-      margin-bottom: 28px;
-      max-width: 700px;
-    }
 
-    .about-grid,
-    .menu-grid,
-    .events-grid,
-    .gallery-grid {
-      display: grid;
-      gap: 24px;
-    }
+        /* HERO */
 
-    .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .events-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .landing-hero {
+            min-height: 650px;
+            padding: 90px 7% 70px;
 
-    .card {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 50px;
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 36px rgba(0,0,0,0.09);
-    }
+            position: relative;
+        }
 
-    .card h3 { margin-bottom: 8px; }
-    .card p { color: var(--muted); }
+        .hero-content {
+            position: relative;
+            z-index: 5;
+        }
 
-    .gallery-item {
-      min-height: 180px;
-      border-radius: 14px;
-      background-size: cover;
-      background-position: center;
-      overflow: hidden;
-      position: relative;
-    }
+        .mini-badge {
+            display: inline-block;
 
-    .gallery-item::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
-    }
+            padding: 9px 18px;
+            border-radius: 30px;
 
-    .gallery-item span {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      color: white;
-      font-weight: 600;
-      z-index: 1;
-    }
+            color: #ff6500;
+            background: #fff0e4;
+            border: 1px solid #ffd3b1;
 
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-    }
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
 
-    .menu-item:last-child { border-bottom: none; }
+            margin-bottom: 25px;
 
-    .price { color: var(--accent); font-weight: 700; }
+            animation: badgePulse 2s infinite;
+        }
 
-    .highlight {
-      background: linear-gradient(135deg, #fce6d3, #fff5ea);
-      border-left: 4px solid var(--accent);
-    }
+        .hero-title {
+            font-size: clamp(45px, 6vw, 78px);
+            line-height: 1.02;
+            font-weight: 950;
+            letter-spacing: -3px;
+        }
 
-    footer {
-      background: #2f241d;
-      color: #f8e9dc;
-      padding: 24px 0;
-      text-align: center;
-    }
+        .hero-title span {
+            color: #ff6500;
+        }
 
-    @media (max-width: 760px) {
-      .about-grid,
-      .menu-grid,
-      .events-grid,
-      .gallery-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      header { min-height: auto; }
-      .hero { min-height: auto; padding: 60px 0; }
-      .section-title { font-size: 1.6rem; }
-      .card { padding: 20px; }
-    }
-  </style>
+        .hero-quote {
+            max-width: 620px;
+            margin-top: 25px;
+
+            color: #555;
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        .hero-quote strong {
+            color: #171717;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .start-btn {
+            border: none;
+            border-radius: 14px;
+
+            padding: 16px 27px;
+
+            background: linear-gradient(
+                135deg,
+                #ff5a00,
+                #ff8c00
+            );
+
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(255,101,0,.25);
+
+            transition: .3s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 18px 40px rgba(255,101,0,.35);
+        }
+
+        .explore-btn {
+            padding: 16px 27px;
+            border-radius: 14px;
+
+            background: white;
+            color: #ff6500;
+
+            border: 2px solid #ff6500;
+
+            font-weight: 800;
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .explore-btn:hover {
+            background: #ff6500;
+            color: white;
+        }
+
+
+        /* ROUND VISUAL */
+
+        .hero-visual {
+            min-height: 480px;
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-orb {
+            width: 310px;
+            height: 310px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #ffb36b,
+                    #ff6500 55%,
+                    #d94600
+                );
+
+            box-shadow:
+                0 30px 70px rgba(255,101,0,.28);
+
+            font-size: 100px;
+
+            animation:
+                orbFloat 4s ease-in-out infinite;
+        }
+
+        .orb-ring {
+            position: absolute;
+
+            width: 390px;
+            height: 390px;
+
+            border-radius: 50%;
+
+            border: 2px dashed
+                rgba(255,101,0,.25);
+
+            animation:
+                rotateRing 18s linear infinite;
+        }
+
+        /* FLOATING ROUND ICONS */
+
+        .float-icon {
+            position: absolute;
+
+            width: 65px;
+            height: 65px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: white;
+
+            border: 1px solid #ffd5b5;
+
+            box-shadow:
+                0 12px 30px rgba(255,101,0,.13);
+
+            font-size: 27px;
+
+            animation:
+                iconFloat 3s ease-in-out infinite;
+        }
+
+        .icon-one {
+            top: 25px;
+            left: 10%;
+        }
+
+        .icon-two {
+            top: 90px;
+            right: 5%;
+            animation-delay: .5s;
+        }
+
+        .icon-three {
+            bottom: 75px;
+            left: 5%;
+            animation-delay: 1s;
+        }
+
+        .icon-four {
+            bottom: 25px;
+            right: 12%;
+            animation-delay: 1.5s;
+        }
+
+        .icon-five {
+            top: 42%;
+            right: -5%;
+            animation-delay: 2s;
+        }
+
+
+        /* STATS */
+
+        .quick-stats {
+            display: flex;
+            gap: 35px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .quick-stat strong {
+            display: block;
+            font-size: 25px;
+            color: #171717;
+        }
+
+        .quick-stat span {
+            color: #888;
+            font-size: 13px;
+        }
+
+
+        /* FEATURES */
+
+        .features {
+            padding: 90px 7%;
+            background: white;
+        }
+
+        .section-label {
+            color: #ff6500;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .features h2 {
+            font-size: 42px;
+            margin: 12px 0 45px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .feature-card {
+            padding: 30px;
+
+            border-radius: 24px;
+
+            background: #fffaf5;
+
+            border: 1px solid #ffe1ca;
+
+            transition: .3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+
+            border-color: #ffad75;
+
+            box-shadow:
+                0 18px 40px rgba(255,101,0,.10);
+        }
+
+        .feature-icon {
+            width: 62px;
+            height: 62px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fff0e4;
+
+            font-size: 28px;
+
+            margin-bottom: 22px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #777;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+
+        /* QUOTE */
+
+        .quote-section {
+            padding: 90px 7%;
+            background:
+                linear-gradient(
+                    135deg,
+                    #171717,
+                    #292929
+                );
+
+            text-align: center;
+            color: white;
+        }
+
+        .quote-symbol {
+            color: #ff6500;
+            font-size: 60px;
+            font-weight: 900;
+        }
+
+        .quote-section h2 {
+            max-width: 850px;
+            margin: 15px auto;
+
+            font-size: clamp(28px, 4vw, 48px);
+            line-height: 1.3;
+
+            color: white;
+        }
+
+        .quote-section p {
+            color: #aaa;
+            margin-top: 20px;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 7%;
+            background: #111;
+            color: #aaa;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        footer strong {
+            color: #ff6500;
+        }
+
+
+        /* ANIMATIONS */
+
+        @keyframes orbFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-18px);
+            }
+
+        }
+
+        @keyframes iconFloat {
+
+            0%, 100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+
+        }
+
+        @keyframes rotateRing {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+        @keyframes badgePulse {
+
+            0%, 100% {
+                box-shadow:
+                    0 0 0 rgba(255,101,0,0);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 25px rgba(255,101,0,.18);
+            }
+
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+
+            .landing-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-quote {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons,
+            .quick-stats {
+                justify-content: center;
+            }
+
+            .feature-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .landing-links {
+                display: none;
+            }
+
+        }
+
+        @media(max-width: 550px) {
+
+            .landing-hero {
+                padding-top: 55px;
+            }
+
+            .hero-title {
+                font-size: 45px;
+            }
+
+            .main-orb {
+                width: 230px;
+                height: 230px;
+                font-size: 75px;
+            }
+
+            .orb-ring {
+                width: 285px;
+                height: 285px;
+            }
+
+            .float-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 21px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
 </head>
+
+
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#" class="logo">Arabian Delight</a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href=>Menu</a>
-          <a href="#events">Events</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
 
-      <div class="hero">
+
+    <!-- NAVIGATION -->
+
+    <nav class="landing-nav">
+
+        <div class="brand">
+            ⚡ DSA<span>QUEST</span>
+        </div>
+
+        <div class="landing-links">
+
+            <button onclick="window.location.href='index.html'">
+                Home
+            </button>
+
+            <button onclick="window.location.href='practice.html'">
+                Practice
+            </button>
+
+            <button onclick="window.location.href='roadmap.html'">
+                Roadmap
+            </button>
+
+            <button onclick="window.location.href='leaderboard.html'">
+                Leaderboard
+            </button>
+
+        </div>
+
+        <button
+            class="landing-links login-btn"
+            onclick="window.location.href='practice.html'">
+
+            Start Coding →
+
+        </button>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="landing-hero">
+
         <div class="hero-content">
-          <h1>Authentic Arabian flavors served with warmth and elegance.</h1>
-          <p>Step into Arabian Delight for rich spices, traditional dishes, and a welcoming atmosphere perfect for family dinners, gatherings, and memorable meals.</p>
-          <div class="btn-row">
-            <a href="#menu" class="btn btn-primary">View Menu</a>
-            <a href="#contact" class="btn btn-secondary">Book a Table</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">Why guests love us</h2>
-        <p class="section-subtitle">From fragrant grills to slow-cooked specialties, Arabian Delight brings comfort, flavor, and hospitality to every visit.</p>
-        <div class="about-grid">
-          <div class="card">
-            <h3>Authentic spices</h3>
-            <p>We craft each dish with bold, traditional flavors and freshly blended spices that bring the heart of Arabia to your table.</p>
-          </div>
-          <div class="card highlight">
-            <h3>Comfort food favorites</h3>
-            <p>Enjoy flavorful rice dishes, grilled meats, fresh bread, and chef specials made for sharing and celebration.</p>
-          </div>
+            <div class="mini-badge">
+                🔥 THE GAMIFIED DSA PLATFORM
+            </div>
+
+            <h1 class="hero-title">
+
+                Don't just learn DSA.
+                <br>
+
+                <span>Conquer it.</span>
+
+            </h1>
+
+            <p class="hero-quote">
+
+                Turn every coding problem into a quest.
+                <strong>Build skills, earn XP, maintain streaks
+                and become a DSA Warrior.</strong>
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="start-btn"
+                    onclick="window.location.href='practice.html'">
+
+                    ⚔️ Start Your Quest
+
+                </button>
+
+                <button
+                    class="explore-btn"
+                    onclick="window.location.href='roadmap.html'">
+
+                    🗺️ Explore Roadmap
+
+                </button>
+
+            </div>
+
+
+            <div class="quick-stats">
+
+                <div class="quick-stat">
+
+                    <strong>300+</strong>
+                    <span>DSA Problems</span>
+
+                </div>
+
+                <div class="quick-stat">
+
+                    <strong>10</strong>
+                    <span>Skill Levels</span>
+
+                </div>
+
+                <div class="quick-stat">
+
+                    <strong>∞</strong>
+                    <span>XP To Earn</span>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
+
+
+        <!-- VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="orb-ring"></div>
+
+            <div class="main-orb">
+                ⚔️
+            </div>
+
+
+            <div class="float-icon icon-one">
+                🧠
+            </div>
+
+            <div class="float-icon icon-two">
+                💻
+            </div>
+
+            <div class="float-icon icon-three">
+                ⚡
+            </div>
+
+            <div class="float-icon icon-four">
+                🏆
+            </div>
+
+            <div class="float-icon icon-five">
+                🔥
+            </div>
+
+        </div>
+
     </section>
 
-    <section id="menu">
-      <div class="container">
-        <h2 class="section-title">Signature Menu</h2>
-        <p class="section-subtitle">A few favorites from our kitchen, made with tradition and care.</p>
-        <div class="menu-grid">
-          <div class="card">
-            <h3>Start Your Meal</h3>
-            <div class="menu-item"><span>Hummus & Pita</span><span class="price">$8</span></div>
-            <div class="menu-item"><span>Falafel Plate</span><span class="price">$10</span></div>
-            <div class="menu-item"><span>Fresh Tabbouleh</span><span class="price">$7</span></div>
-          </div>
-          <div class="card">
-            <h3>Refreshing Drinks</h3>
-            <div class="menu-item"><span>Mint Lemonade</span><span class="price">$4</span></div>
-            <div class="menu-item"><span>Cardamom Tea</span><span class="price">$5</span></div>
-            <div class="menu-item"><span>Arabic Coffee</span><span class="price">$6</span></div>
-          </div>
-          <div class="card">
-            <h3>Signature Dishes</h3>
-            <div class="menu-item"><span>Chicken Shawarma</span><span class="price">$14</span></div>
-            <div class="menu-item"><span>Beef Kebab Plate</span><span class="price">$16</span></div>
-            <div class="menu-item"><span>Mixed Grill</span><span class="price">$18</span></div>
-          </div>
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <span class="section-label">
+            WHY DSA QUEST?
+        </span>
+
+        <h2>
+            Learn. Practice. <span style="color:#ff6500;">
+            Level Up.</span>
+        </h2>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚔️
+                </div>
+
+                <h3>
+                    Quest Based Learning
+                </h3>
+
+                <p>
+                    Solve DSA challenges like quests
+                    instead of boring practice sheets.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Earn XP
+                </h3>
+
+                <p>
+                    Every solved problem gives you XP.
+                    Collect enough XP to unlock new levels.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Build Your Streak
+                </h3>
+
+                <p>
+                    Practice every day and maintain
+                    your coding streak.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🏆
+                </div>
+
+                <h3>
+                    Compete
+                </h3>
+
+                <p>
+                    Climb the leaderboard and prove
+                    that you are the ultimate DSA Warrior.
+                </p>
+
+            </div>
+
         </div>
-      </div>
+
     </section>
 
-    <section id="events">
-      <div class="container">
-        <h2 class="section-title">Upcoming Events</h2>
-        <p class="section-subtitle">Join us for family nights, live entertainment, and seasonal feasts.</p>
-        <div class="events-grid">
-          <div class="card">
-            <h3>Live Oud Night</h3>
-            <p>Every Friday from 7 PM with traditional music and warm hospitality.</p>
-          </div>
-          <div class="card">
-            <h3>Weekend Family Feast</h3>
-            <p>Enjoy shared platters, fresh bread, and a festive spread for every table.</p>
-          </div>
+
+    <!-- QUOTE -->
+
+    <section class="quote-section">
+
+        <div class="quote-symbol">
+            “
         </div>
-      </div>
+
+        <h2>
+            Every problem you solve today
+            makes tomorrow's interview easier.
+        </h2>
+
+        <p>
+            — Your journey from beginner to DSA Warrior starts here.
+        </p>
+
     </section>
 
-    <section id="gallery">
-      <div class="container">
-        <h2 class="section-title">Moments at Arabian Delight</h2>
-        <p class="section-subtitle">A glimpse of our warm interiors, colorful dishes, and joyful gatherings.</p>
-        <div class="gallery-grid">
-          <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80');"><span>Cozy Interiors</span></div>
-          <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80');"><span>Chef Specials</span></div>
-          <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=800&q=80');"><span>Sweet Treats</span></div>
-        </div>
-      </div>
-    </section>
 
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Visit Arabian Delight</h2>
-        <p class="section-subtitle">Open daily from 11:00 AM to 11:00 PM. Find us at 42 Market Street.</p>
-        <div class="card">
-          <p><strong>Phone:</strong> (555) 123-4567</p>
-          <p><strong>Email:</strong> hello@thecafe.com</p>
-        </div>
-      </div>
-    </section>
-  </main>
+    <!-- FOOTER -->
 
-  <footer>
-    <div class="container">
-      <p>© 2026 Arabian Delight. Crafted with comfort and flavor.</p>
-    </div>
-  </footer>
+    <footer>
+
+        <div>
+            ⚡ <strong>DSA QUEST</strong>
+            — Level Up Your Coding.
+        </div>
+
+        <div>
+            Built for the next generation of developers 🚀
+        </div>
+
+    </footer>
+
+
 </body>
+
 </html>
+```

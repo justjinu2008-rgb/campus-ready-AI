@@ -1,0 +1,2081 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DSA Quest | Practice Arena</title>
+
+<style>
+
+/* ================================
+   RESET
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff8f3;
+    color:#171717;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+
+    min-height:72px;
+
+    padding:0 6%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:rgba(255,255,255,.96);
+
+    border-bottom:1px solid #eee;
+
+    box-shadow:0 5px 25px rgba(0,0,0,.04);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:900;
+}
+
+.logo span{
+    color:#ff6500;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#222;
+
+    padding:11px 15px;
+
+    border-radius:11px;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    background:#fff0e5;
+    color:#ff6500;
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+.container{
+    width:90%;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:45px 0 90px;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:35px;
+
+    margin-bottom:25px;
+}
+
+.hero-text small{
+    color:#ff6500;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,65px);
+
+    line-height:1;
+
+    margin:12px 0;
+
+    letter-spacing:-3px;
+}
+
+.hero h1 span{
+    color:#ff6500;
+}
+
+.hero-text p{
+    color:#777;
+
+    font-size:17px;
+}
+
+
+/* ================================
+   QUOTE
+================================ */
+
+.quote{
+    width:400px;
+
+    padding:25px;
+
+    border-radius:21px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717,
+            #303030
+        );
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.14);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.quote:after{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    right:-70px;
+    top:-70px;
+
+    border-radius:50%;
+
+    background:#ff6500;
+
+    opacity:.25;
+}
+
+.quote-icon{
+    font-size:30px;
+
+    margin-bottom:10px;
+}
+
+.quote h2{
+    font-size:19px;
+
+    line-height:1.5;
+
+    position:relative;
+    z-index:2;
+}
+
+.quote p{
+    margin-top:9px;
+
+    color:#bbb;
+
+    font-size:14px;
+}
+
+
+/* ================================
+   STATS
+================================ */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:22px;
+}
+
+.stat{
+    background:white;
+
+    border:1px solid #eee;
+
+    border-radius:18px;
+
+    padding:19px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.05);
+
+    transition:.25s;
+}
+
+.stat:hover{
+    transform:translateY(-4px);
+
+    border-color:#ffb083;
+}
+
+.stat-icon{
+    width:47px;
+    height:47px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#fff0e5;
+
+    font-size:23px;
+}
+
+.stat small{
+    display:block;
+
+    color:#888;
+
+    margin-bottom:4px;
+}
+
+.stat strong{
+    font-size:19px;
+}
+
+
+/* ================================
+   DAILY MISSION
+================================ */
+
+.mission{
+    background:
+        linear-gradient(
+            120deg,
+            #ff5a00,
+            #ff8b3d
+        );
+
+    color:white;
+
+    border-radius:21px;
+
+    padding:25px 28px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin-bottom:30px;
+
+    box-shadow:
+        0 15px 35px rgba(255,101,0,.2);
+}
+
+.mission-label{
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    font-weight:900;
+}
+
+.mission h3{
+    margin:7px 0;
+
+    font-size:22px;
+}
+
+.mission p{
+    opacity:.9;
+}
+
+.mission-right{
+    min-width:180px;
+
+    text-align:right;
+}
+
+.mission-right strong{
+    font-size:22px;
+}
+
+.mission-bar{
+    height:8px;
+
+    margin:8px 0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.25);
+}
+
+.mission-bar span{
+    display:block;
+
+    width:60%;
+
+    height:100%;
+
+    background:white;
+
+    border-radius:20px;
+}
+
+
+/* ================================
+   SEARCH
+================================ */
+
+.search-box{
+    margin-bottom:18px;
+}
+
+.search-box input{
+    width:100%;
+
+    padding:17px 20px;
+
+    border:2px solid #eee;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+
+    background:white;
+
+    transition:.2s;
+}
+
+.search-box input:focus{
+    border-color:#ff6500;
+
+    box-shadow:
+        0 0 0 4px rgba(255,101,0,.08);
+}
+
+
+/* ================================
+   FILTERS
+================================ */
+
+.filters{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:9px;
+
+    margin-bottom:22px;
+}
+
+.filter{
+    border:1px solid #ddd;
+
+    background:white;
+
+    padding:10px 17px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.filter:hover,
+.filter.active{
+    background:#ff6500;
+
+    color:white;
+
+    border-color:#ff6500;
+}
+
+
+/* ================================
+   QUESTION CARD
+================================ */
+
+.question-card{
+    background:white;
+
+    border:1px solid #eee;
+
+    border-radius:23px;
+
+    padding:32px;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.07);
+
+    animation:questionIn .4s ease;
+}
+
+@keyframes questionIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(18px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+.question-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #eee;
+}
+
+.question-number{
+    color:#ff6500;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.difficulty{
+    padding:7px 13px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:900;
+}
+
+.easy{
+    background:#e8fff0;
+
+    color:#16804a;
+}
+
+.medium{
+    background:#fff1d4;
+
+    color:#a56500;
+}
+
+.hard{
+    background:#171717;
+
+    color:white;
+}
+
+.topic-name{
+    margin-top:24px;
+
+    color:#ff6500;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+}
+
+.question-card h2{
+    margin-top:10px;
+
+    font-size:27px;
+
+    line-height:1.5;
+}
+
+
+/* ================================
+   OPTIONS
+================================ */
+
+.options{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:14px;
+
+    margin-top:28px;
+}
+
+.option{
+    min-height:68px;
+
+    padding:13px 16px;
+
+    border:2px solid #eee;
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.option:hover{
+    border-color:#ff8b55;
+
+    background:#fffaf7;
+
+    transform:translateY(-2px);
+}
+
+.option.selected{
+    border-color:#ff6500;
+
+    background:#fff0e5;
+}
+
+.option.correct{
+    border-color:#17a257;
+
+    background:#eafff1;
+}
+
+.option.wrong{
+    border-color:#e53935;
+
+    background:#fff0f0;
+}
+
+.letter{
+    width:38px;
+    height:38px;
+
+    min-width:38px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#fff0e5;
+
+    color:#ff6500;
+
+    font-weight:900;
+}
+
+
+/* ================================
+   FEEDBACK
+================================ */
+
+.feedback{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:13px;
+
+    font-weight:bold;
+}
+
+.feedback.show{
+    display:block;
+}
+
+.feedback.correct-msg{
+    background:#eafff1;
+
+    color:#137b47;
+}
+
+.feedback.wrong-msg{
+    background:#fff0f0;
+
+    color:#d52d2d;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.controls{
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:24px;
+
+    padding-top:22px;
+
+    border-top:1px solid #eee;
+}
+
+.btn{
+    border:none;
+
+    padding:14px 24px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5100,
+            #ff8a00
+        );
+
+    color:white;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(255,101,0,.2);
+
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+#nextBtn{
+    display:none;
+}
+
+
+/* ================================
+   QUESTION NUMBERS
+================================ */
+
+.question-numbers{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-top:20px;
+}
+
+.q-number{
+    width:40px;
+    height:40px;
+
+    border:1px solid #ddd;
+
+    background:white;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.q-number:hover,
+.q-number.active{
+    background:#ff6500;
+
+    color:white;
+
+    border-color:#ff6500;
+}
+
+
+/* ================================
+   BOTTOM QUOTE
+================================ */
+
+.bottom-quote{
+    margin-top:50px;
+
+    padding:35px;
+
+    text-align:center;
+
+    color:white;
+
+    background:#171717;
+
+    border-radius:22px;
+}
+
+.bottom-quote h2{
+    color:#ff8a42;
+
+    margin-bottom:8px;
+}
+
+.bottom-quote p{
+    color:#aaa;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media(max-width:850px){
+
+    .hero{
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .quote{
+        width:100%;
+    }
+
+    .stats{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .mission{
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .mission-right{
+        width:100%;
+
+        text-align:left;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:12px 5%;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .question-card{
+        padding:22px;
+    }
+
+    .question-card h2{
+        font-size:21px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     NAVBAR
+===================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        ⚡ DSA<span>QUEST</span>
+    </div>
+
+
+    <nav class="nav-links">
+
+        <!-- SAME FOLDER LINKS -->
+
+        <a href="./index.html">
+            🏠 Home
+        </a>
+
+        <a
+            href="./practice.html"
+            class="active">
+
+            ⚔️ Practice
+
+        </a>
+
+        <a href="./roadmap.html">
+
+            🗺️ Roadmap
+
+        </a>
+
+        <a href="./leaderboard.html">
+
+            🏆 Leaderboard
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <small>
+            ⚔️ TRAINING GROUND
+        </small>
+
+        <h1>
+            DSA <span>Quest Arena</span>
+        </h1>
+
+        <p>
+            Think. Solve. Learn. Level Up. 🚀
+        </p>
+
+    </div>
+
+
+    <div class="quote">
+
+        <div class="quote-icon">
+            ⚡
+        </div>
+
+        <h2>
+            "Every problem you solve makes
+            you stronger than yesterday."
+        </h2>
+
+        <p>
+            Keep coding. Keep learning.
+            Never stop improving.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            🔥
+        </div>
+
+        <div>
+
+            <small>
+                Current Streak
+            </small>
+
+            <strong>
+                7 Days
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            ⚡
+        </div>
+
+        <div>
+
+            <small>
+                Total XP
+            </small>
+
+            <strong id="xp">
+                850 XP
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            🎯
+        </div>
+
+        <div>
+
+            <small>
+                Solved Today
+            </small>
+
+            <strong id="solved">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <small>
+                Rank
+            </small>
+
+            <strong>
+                Warrior
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DAILY MISSION -->
+
+<section class="mission">
+
+    <div>
+
+        <div class="mission-label">
+            🎯 DAILY MISSION
+        </div>
+
+        <h3>
+            Solve 5 DSA Problems Today
+        </h3>
+
+        <p>
+            Complete your mission and earn
+            <b>250 XP</b>.
+        </p>
+
+    </div>
+
+
+    <div class="mission-right">
+
+        <strong id="missionCount">
+            0 / 5
+        </strong>
+
+        <div class="mission-bar">
+
+            <span
+                id="missionBar">
+            </span>
+
+        </div>
+
+        <small>
+            Daily Progress
+        </small>
+
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search Arrays, Strings, Trees, Graphs..."
+    >
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+    <button
+        class="filter active"
+        onclick="filterDifficulty('ALL',this)">
+
+        All
+
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterDifficulty('EASY',this)">
+
+        🟢 Easy
+
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterDifficulty('MEDIUM',this)">
+
+        🟡 Medium
+
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterDifficulty('HARD',this)">
+
+        🔴 Hard
+
+    </button>
+
+</div>
+
+
+<!-- QUESTION CARD -->
+
+<section
+    class="question-card"
+    id="questionCard">
+
+
+    <div class="question-top">
+
+        <span
+            class="question-number"
+            id="questionNumber">
+
+            QUESTION 01
+
+        </span>
+
+
+        <span
+            class="difficulty easy"
+            id="difficulty">
+
+            EASY
+
+        </span>
+
+    </div>
+
+
+    <div
+        class="topic-name"
+        id="topic">
+
+        ARRAYS
+
+    </div>
+
+
+    <h2 id="question">
+        Loading question...
+    </h2>
+
+
+    <div
+        class="options"
+        id="options">
+    </div>
+
+
+    <div
+        class="feedback"
+        id="feedback">
+    </div>
+
+
+    <div class="controls">
+
+        <button
+            class="btn"
+            id="submitBtn"
+            onclick="submitAnswer()">
+
+            Submit Answer ✓
+
+        </button>
+
+
+        <button
+            class="btn"
+            id="nextBtn"
+            onclick="nextQuestion()">
+
+            Next Question →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- QUESTION NUMBERS -->
+
+<div
+    class="question-numbers"
+    id="questionNumbers">
+</div>
+
+
+<!-- BOTTOM MOTIVATION -->
+
+<section class="bottom-quote">
+
+    <h2>
+        ⚔️ One Question At A Time.
+    </h2>
+
+    <p>
+        Don't compare your progress with others.
+        Compete with yesterday's version of yourself.
+    </p>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* =====================================
+   QUESTION BANK
+===================================== */
+
+const questions = [
+
+{
+topic:"ARRAYS",
+difficulty:"EASY",
+question:"What is the time complexity of accessing an element from an array using its index?",
+options:[
+"O(n)",
+"O(log n)",
+"O(1)",
+"O(n²)"
+],
+answer:2
+},
+
+{
+topic:"ARRAYS",
+difficulty:"EASY",
+question:"Which method adds an element to the end of a JavaScript array?",
+options:[
+"pop()",
+"push()",
+"shift()",
+"slice()"
+],
+answer:1
+},
+
+{
+topic:"ARRAYS",
+difficulty:"MEDIUM",
+question:"Which algorithm is commonly used to search an element in a sorted array efficiently?",
+options:[
+"Linear Search",
+"Binary Search",
+"Bubble Sort",
+"DFS"
+],
+answer:1
+},
+
+{
+topic:"ARRAYS",
+difficulty:"HARD",
+question:"What is the worst-case time complexity of Quick Sort?",
+options:[
+"O(n)",
+"O(log n)",
+"O(n log n)",
+"O(n²)"
+],
+answer:3
+},
+
+{
+topic:"STRINGS",
+difficulty:"EASY",
+question:"Which property gives the length of a JavaScript string?",
+options:[
+"size",
+"count",
+"length",
+"total"
+],
+answer:2
+},
+
+{
+topic:"STRINGS",
+difficulty:"EASY",
+question:"What is a palindrome?",
+options:[
+"A sorted string",
+"A string that reads the same forward and backward",
+"A string containing only numbers",
+"An empty string"
+],
+answer:1
+},
+
+{
+topic:"STRINGS",
+difficulty:"MEDIUM",
+question:"Which technique is useful for checking whether two strings are anagrams?",
+options:[
+"Frequency counting",
+"Binary tree",
+"BFS",
+"Queue only"
+],
+answer:0
+},
+
+{
+topic:"LINKED LIST",
+difficulty:"EASY",
+question:"What does a node in a singly linked list contain?",
+options:[
+"Only data",
+"Data and a reference to the next node",
+"Only an index",
+"Only a pointer"
+],
+answer:1
+},
+
+{
+topic:"LINKED LIST",
+difficulty:"EASY",
+question:"What is the time complexity of inserting a node at the beginning of a linked list?",
+options:[
+"O(1)",
+"O(n)",
+"O(log n)",
+"O(n²)"
+],
+answer:0
+},
+
+{
+topic:"LINKED LIST",
+difficulty:"MEDIUM",
+question:"Which technique is commonly used to detect a cycle in a linked list?",
+options:[
+"Floyd's cycle detection",
+"Binary Search",
+"Merge Sort",
+"Hash only"
+],
+answer:0
+},
+
+{
+topic:"STACK",
+difficulty:"EASY",
+question:"Which principle does a Stack follow?",
+options:[
+"FIFO",
+"LIFO",
+"Random",
+"Priority"
+],
+answer:1
+},
+
+{
+topic:"STACK",
+difficulty:"EASY",
+question:"Which operation removes the top element from a Stack?",
+options:[
+"Push",
+"Pop",
+"Insert",
+"Enqueue"
+],
+answer:1
+},
+
+{
+topic:"QUEUE",
+difficulty:"EASY",
+question:"Which principle does a Queue follow?",
+options:[
+"LIFO",
+"FIFO",
+"Random",
+"Binary"
+],
+answer:1
+},
+
+{
+topic:"QUEUE",
+difficulty:"EASY",
+question:"Which operation removes an element from the front of a Queue?",
+options:[
+"Push",
+"Pop",
+"Dequeue",
+"Insert"
+],
+answer:2
+},
+
+{
+topic:"TREES",
+difficulty:"EASY",
+question:"What is the topmost node of a tree called?",
+options:[
+"Leaf",
+"Root",
+"Child",
+"Edge"
+],
+answer:1
+},
+
+{
+topic:"TREES",
+difficulty:"MEDIUM",
+question:"Which traversal of a Binary Search Tree produces sorted order?",
+options:[
+"Preorder",
+"Inorder",
+"Postorder",
+"Level Order"
+],
+answer:1
+},
+
+{
+topic:"TREES",
+difficulty:"HARD",
+question:"What is the maximum number of nodes at level L of a binary tree when the root is level 0?",
+options:[
+"L",
+"2L",
+"2^L",
+"L²"
+],
+answer:2
+},
+
+{
+topic:"GRAPHS",
+difficulty:"EASY",
+question:"Which graph traversal normally uses a Queue?",
+options:[
+"DFS",
+"BFS",
+"Inorder",
+"Binary Search"
+],
+answer:1
+},
+
+{
+topic:"GRAPHS",
+difficulty:"MEDIUM",
+question:"Which algorithm is commonly used for shortest paths with non-negative edge weights?",
+options:[
+"DFS",
+"Bubble Sort",
+"Dijkstra",
+"Binary Search"
+],
+answer:2
+},
+
+{
+topic:"DYNAMIC PROGRAMMING",
+difficulty:"MEDIUM",
+question:"What is the main idea of Dynamic Programming?",
+options:[
+"Repeat every calculation",
+"Store solutions of subproblems",
+"Always use sorting",
+"Always use recursion"
+],
+answer:1
+},
+
+{
+topic:"DYNAMIC PROGRAMMING",
+difficulty:"EASY",
+question:"Which problem is commonly used to demonstrate Dynamic Programming?",
+options:[
+"Fibonacci",
+"Printing Hello World",
+"Variable declaration",
+"HTML styling"
+],
+answer:0
+},
+
+{
+topic:"HEAPS",
+difficulty:"MEDIUM",
+question:"Which data structure is commonly used to implement a Priority Queue?",
+options:[
+"Stack",
+"Heap",
+"Linked List",
+"Graph"
+],
+answer:1
+},
+
+{
+topic:"SORTING",
+difficulty:"MEDIUM",
+question:"Which sorting algorithm has an average time complexity of O(n log n)?",
+options:[
+"Bubble Sort",
+"Merge Sort",
+"Linear Search",
+"Selection Sort"
+],
+answer:1
+}
+
+];
+
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+let currentQuestion = 0;
+
+let selectedAnswer = null;
+
+let score = 850;
+
+let solvedCount = 0;
+
+let currentFilter = "ALL";
+
+
+/* =====================================
+   LOAD QUESTION
+===================================== */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    selectedAnswer = null;
+
+
+    document.getElementById("questionNumber")
+        .innerText =
+        "QUESTION " +
+        String(currentQuestion + 1)
+        .padStart(2,"0");
+
+
+    document.getElementById("topic")
+        .innerText =
+        q.topic;
+
+
+    const difficulty =
+        document.getElementById("difficulty");
+
+
+    difficulty.innerText =
+        q.difficulty;
+
+
+    difficulty.className =
+        "difficulty " +
+        q.difficulty.toLowerCase();
+
+
+    document.getElementById("question")
+        .innerText =
+        q.question;
+
+
+    const options =
+        document.getElementById("options");
+
+
+    options.innerHTML = "";
+
+
+    q.options.forEach(function(text,index){
+
+        const option =
+            document.createElement("div");
+
+
+        option.className =
+            "option";
+
+
+        option.innerHTML =
+
+            '<span class="letter">' +
+
+            String.fromCharCode(65 + index) +
+
+            '</span>' +
+
+            '<span>' +
+
+            text +
+
+            '</span>';
+
+
+        option.onclick = function(){
+
+            document
+                .querySelectorAll(".option")
+                .forEach(function(item){
+
+                    item.classList
+                        .remove("selected");
+
+                });
+
+
+            option.classList
+                .add("selected");
+
+
+            selectedAnswer = index;
+
+        };
+
+
+        options.appendChild(option);
+
+    });
+
+
+    document.getElementById("feedback")
+        .className =
+        "feedback";
+
+
+    document.getElementById("feedback")
+        .innerText = "";
+
+
+    document.getElementById("submitBtn")
+        .style.display =
+        "block";
+
+
+    document.getElementById("nextBtn")
+        .style.display =
+        "none";
+
+
+    createQuestionNumbers();
+
+
+    animateCard();
+
+}
+
+
+/* =====================================
+   SUBMIT
+===================================== */
+
+function submitAnswer(){
+
+    if(selectedAnswer === null){
+
+        alert(
+            "⚔️ Please select A, B, C or D first!"
+        );
+
+        return;
+
+    }
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    const options =
+        document.querySelectorAll(".option");
+
+
+    options.forEach(function(option,index){
+
+        option.style.pointerEvents =
+            "none";
+
+
+        if(index === q.answer){
+
+            option.classList
+                .add("correct");
+
+        }
+
+
+        if(
+            index === selectedAnswer &&
+            index !== q.answer
+        ){
+
+            option.classList
+                .add("wrong");
+
+        }
+
+    });
+
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    if(selectedAnswer === q.answer){
+
+        score += 50;
+
+        solvedCount++;
+
+
+        document.getElementById("xp")
+            .innerText =
+            score + " XP";
+
+
+        document.getElementById("solved")
+            .innerText =
+            solvedCount;
+
+
+        feedback.innerText =
+            "🎉 Correct! +50 XP — Excellent work!";
+
+
+        feedback.className =
+            "feedback show correct-msg";
+
+
+    }else{
+
+        feedback.innerText =
+            "❌ Incorrect. Correct answer is " +
+
+            String.fromCharCode(
+                65 + q.answer
+            );
+
+
+        feedback.className =
+            "feedback show wrong-msg";
+
+    }
+
+
+    updateMission();
+
+
+    document.getElementById("submitBtn")
+        .style.display =
+        "none";
+
+
+    document.getElementById("nextBtn")
+        .style.display =
+        "block";
+
+}
+
+
+/* =====================================
+   NEXT QUESTION
+===================================== */
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+
+    if(currentQuestion >= questions.length){
+
+        alert(
+            "🏆 QUEST COMPLETE!\n\n" +
+            "You completed all " +
+            questions.length +
+            " questions!"
+        );
+
+
+        currentQuestion = 0;
+
+    }
+
+
+    loadQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   QUESTION NUMBERS
+===================================== */
+
+function createQuestionNumbers(){
+
+    const box =
+        document.getElementById(
+            "questionNumbers"
+        );
+
+
+    box.innerHTML = "";
+
+
+    questions.forEach(function(q,index){
+
+        const button =
+            document.createElement("button");
+
+
+        button.className =
+            "q-number";
+
+
+        button.innerText =
+            index + 1;
+
+
+        if(index === currentQuestion){
+
+            button.classList
+                .add("active");
+
+        }
+
+
+        button.onclick = function(){
+
+            currentQuestion = index;
+
+            loadQuestion();
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        };
+
+
+        box.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================
+   DAILY MISSION
+===================================== */
+
+function updateMission(){
+
+    const amount =
+        Math.min(solvedCount,5);
+
+
+    document.getElementById("missionCount")
+        .innerText =
+        amount + " / 5";
+
+
+    document.getElementById("missionBar")
+        .style.width =
+        ((amount / 5) * 100) + "%";
+
+}
+
+
+/* =====================================
+   FILTER
+===================================== */
+
+function filterDifficulty(
+    difficulty,
+    button
+){
+
+    currentFilter =
+        difficulty;
+
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(function(item){
+
+            item.classList
+                .remove("active");
+
+        });
+
+
+    button.classList
+        .add("active");
+
+
+    if(difficulty === "ALL"){
+
+        currentQuestion = 0;
+
+    }else{
+
+        const index =
+            questions.findIndex(
+                function(q){
+
+                    return q.difficulty ===
+                        difficulty;
+
+                }
+            );
+
+
+        if(index !== -1){
+
+            currentQuestion = index;
+
+        }
+
+    }
+
+
+    loadQuestion();
+
+}
+
+
+/* =====================================
+   SEARCH
+===================================== */
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        function(){
+
+            const search =
+                this.value
+                .toLowerCase()
+                .trim();
+
+
+            if(search === ""){
+
+                return;
+
+            }
+
+
+            const index =
+                questions.findIndex(
+                    function(q){
+
+                        return (
+
+                            q.question
+                                .toLowerCase()
+                                .includes(search)
+
+                            ||
+
+                            q.topic
+                                .toLowerCase()
+                                .includes(search)
+
+                        );
+
+                    }
+                );
+
+
+            if(index !== -1){
+
+                currentQuestion = index;
+
+                loadQuestion();
+
+            }
+
+        }
+    );
+
+
+/* =====================================
+   CARD ANIMATION
+===================================== */
+
+function animateCard(){
+
+    const card =
+        document.getElementById(
+            "questionCard"
+        );
+
+
+    card.style.animation =
+        "none";
+
+
+    void card.offsetWidth;
+
+
+    card.style.animation =
+        "questionIn .4s ease";
+
+}
+
+
+/* =====================================
+   START WEBSITE
+===================================== */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
+```
